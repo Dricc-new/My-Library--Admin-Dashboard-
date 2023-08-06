@@ -1,9 +1,9 @@
 import AppLayout from "../layouts/AppLayout";
 
-export default function Dashboard(){
+export default function Books(){
     return(
         <AppLayout>
-            Dashboard
+            books
         </AppLayout>
     )
 }

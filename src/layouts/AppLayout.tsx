@@ -2,7 +2,7 @@ import { useState } from 'react'
 import NavBar from '../components/Navbar'
 import Aside from '../components/Aside'
 
-export default function AppLayout() {
+export default function AppLayout(props: any) {
     const [toggleMenu, setToggleMenu] = useState(false)
     return (
         <>
@@ -18,7 +18,7 @@ export default function AppLayout() {
                 <Aside></Aside>
             </aside>
             <main className='mt-12 w-screen'>
-
+                {props.children}
             </main>
         </>
     )
