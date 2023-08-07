@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import AppLayout from "../layouts/AppLayout";
 import 'react-router-dom';
-import axios from "axios";
 
 import { withRouter, WithRouterProps } from '../withRouter';
+import { createBook, getBook, updateBook } from "../services/BookServices";
 
 interface Params {
     id: string;
@@ -14,19 +14,23 @@ type Props = WithRouterProps<Params>;
 class Books extends Component<Props> {
     state = {
         book: { title: '', author: '', description: '' },
-        id: 0
+        id: ''
     }
 
+    // Load data when changing inputs
     onChange = (e: any) => {
         this.setState({ book: { ...this.state.book, [e.target.name]: e.target.value } })
     }
     
+    // Control when loading this component
     async componentDidMount(): Promise<void> {
         const { match } = this.props;
+        
+        // if exist id on route
         if (match.params.id) {
             try {
                 this.setState({ id: match.params.id })
-                const res = await axios.get('http://localhost:4000/books/' + match.params.id)
+                const res = await getBook(match.params.id)
                 this.setState({ book: res.data })
             } catch (err) {
                 console.log(err)
@@ -43,9 +47,9 @@ class Books extends Component<Props> {
                 description: this.state.book.description,
             }
             if (this.state.id) {
-                await axios.put('http://localhost:4000/books/' + this.state.id, newBook)
+                await updateBook(this.state.id, newBook)
             } else {
-                await axios.post('http://localhost:4000/books', newBook)
+                await createBook(newBook)
             }
             window.location.href = 'http://localhost:5173/dashboard '
         } catch (err) {

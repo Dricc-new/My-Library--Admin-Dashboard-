@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppLayout from "../layouts/AppLayout";
-import axios from "axios";
 import { Link } from 'react-router-dom'
+import { deleteBook, getBooks } from "../services/BookServices";
 
 interface Book {
     _id: string
@@ -16,15 +16,20 @@ export default class Dashboard extends Component {
         books: new Array<Book>
     }
 
+    // Delete a book
     async deleteBook(id: string) {
-        await axios.delete('http://localhost:4000/books/' + id)
+        await deleteBook(id)
         this.componentDidMount()
     }
 
+    // Control when loading this component
     async componentDidMount(): Promise<void> {
-        const res = await axios.get('http://localhost:4000/books')
+
+        // Get all books
+        const res = await getBooks()
         this.setState({ books: res.data })
     }
+
     render(): React.ReactNode {
         return (
             <AppLayout>
@@ -39,7 +44,7 @@ export default class Dashboard extends Component {
                                     <h2 className="capitalize decoration-sky-600 underline decoration-2 text-sm font-semibold">{book.author}</h2>
                                     <p className="overflow-hidden">{book.description}</p>
                                     <div className="flex gap-2 w-full justify-end">
-                                        <Link className="p-1 px-5 rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-blue-600 to-violet-500 text-white" to={"/books/"+book._id+"/edit" }>
+                                        <Link className="p-1 px-5 rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-blue-600 to-violet-500 text-white" to={"/books/" + book._id + "/edit"}>
                                             <i className="fas fa-pencil"></i>
                                         </Link>
                                         <button onClick={() => this.deleteBook(book._id)} className="p-1 px-5 rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-red-600 to-pink-500 text-white"><i className="fas fa-trash"></i></button>
