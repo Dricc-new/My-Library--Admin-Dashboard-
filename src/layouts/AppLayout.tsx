@@ -8,7 +8,7 @@ export default function AppLayout(props: any) {
         <>
             <header className='fixed top-0 bg-stone-900 shadow-xs shadow-stone-950 w-screen text-white'>
                 <nav className='container mx-auto p-2 flex justify-between'>
-                    <h1 className='uppercase text-2xl'><i className='fas fa-book text-blue-700'></i> MyLibrary</h1>
+                    <h1 className='uppercase text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-bold'><i className='fas fa-book bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500'></i> MyLibrary</h1>
                     <button onClick={() => setToggleMenu(toggleMenu ? false : true)} className='sm:hidden border rounded px-2'>
                         <i className='fas fa-navicon'></i>
                     </button>
@@ -18,7 +18,7 @@ export default function AppLayout(props: any) {
                 <aside className={'fixed sm:static sm:w-64 z-0 right-0 w-screen bg-stone-950 text-white transition-all ' + (toggleMenu ? 'translate-x-0' : 'max-sm:translate-x-full')}>
                     <Aside></Aside>
                 </aside>
-                <main className='h-full overflow-y-scroll container mx-auto'>
+                <main className='h-full overflow-y-auto container mx-auto bg-gray-100'>
                     {props.children}
                 </main>
             </section>
