@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react"
-type TypeApp = {}
-const AppContext = createContext<TypeApp>({})
+type AppType = {}
+const AppContext = createContext<AppType>({})
 
 export const useAppContext = () => {
     const context = useContext(AppContext)
