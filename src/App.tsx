@@ -3,12 +3,12 @@ import Dashboard from "./pages/Dashboard"
 import Books from "./pages/Books"
 import Users from "./pages/Users"
 import NotFound from "./pages/NotFound"
-import { AppContainer } from "./context/AppContext"
+import { AppProvider } from "./context/AppContext"
 
 function App() {
     return (
         <BrowserRouter>
-            <AppContainer>
+            <AppProvider>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="*" element={<NotFound />} />
@@ -18,7 +18,7 @@ function App() {
                     <Route path="/books" element={<Books />} />
                     <Route path="/books/:id/edit" element={<Books />} />
                 </Routes>
-            </AppContainer>
+            </AppProvider>
         </BrowserRouter>
     )
 }

@@ -7,7 +7,7 @@ export const useAppContext = () => {
     return context
 }
 
-export const AppContainer = (props: { children: any }) => {
+export const AppProvider = (props: { children: any }) => {
     return <AppContext.Provider value={{}}>
         {props.children}
     </AppContext.Provider>
