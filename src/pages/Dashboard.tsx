@@ -28,10 +28,10 @@ export default class Dashboard extends Component {
     render(): React.ReactNode {
         return (
             <AppLayout>
-                <section className="p-2">
+                <section className="p-2 max-sm:w-screen">
                     <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-sky-500">Books</h1>
                     <hr />
-                    <ul className=" grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-4 cursor-default">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-4 cursor-default">
                         {
                             this.state.books.map(book =>
                                 <li key={book._id} className="shadow-md bg-white rounded shadow-gray-400 hover:shadow-gray-600 hover:shadow-lg p-2">

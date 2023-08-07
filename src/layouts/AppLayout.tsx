@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import NavBar from '../components/Navbar'
 import Aside from '../components/Aside'
 
 export default function AppLayout(props: any) {
@@ -18,7 +17,7 @@ export default function AppLayout(props: any) {
                 <aside className={'fixed sm:static sm:w-64 z-0 right-0 w-screen bg-stone-950 text-white transition-all ' + (toggleMenu ? 'translate-x-0' : 'max-sm:translate-x-full')}>
                     <Aside></Aside>
                 </aside>
-                <main className='h-full overflow-y-auto container mx-auto bg-gray-100'>
+                <main className='h-full grow max-sm:w-screen overflow-y-auto container mx-auto bg-gray-100'>
                     {props.children}
                 </main>
             </section>
