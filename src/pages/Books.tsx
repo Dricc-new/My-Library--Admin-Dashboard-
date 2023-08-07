@@ -46,6 +46,7 @@ class Books extends Component<Props> {
             } else {
                 await axios.post('http://localhost:4000/books', newBook)
             }
+            window.location.href = 'http://localhost:5173/dashboard '
         } catch (err) {
             console.log(err)
         }
