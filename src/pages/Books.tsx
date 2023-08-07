@@ -20,6 +20,7 @@ class Books extends Component<Props> {
     onChange = (e: any) => {
         this.setState({ book: { ...this.state.book, [e.target.name]: e.target.value } })
     }
+    
     async componentDidMount(): Promise<void> {
         const { match } = this.props;
         if (match.params.id) {
