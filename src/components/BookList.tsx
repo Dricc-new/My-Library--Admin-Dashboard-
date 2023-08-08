@@ -26,7 +26,7 @@ export function BookList() {
 
     return <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-4 cursor-default">
         {books.map(book =>
-            <BookItem key={book._id} _id={book._id} title={book.title} author={book.author} description={book.description} onDelete={() => getAllBooks()} />
+            <BookItem key={book._id} book={book} onDelete={() => getAllBooks()} />
         )}
     </ul>
 }
