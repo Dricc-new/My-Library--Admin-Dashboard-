@@ -11,8 +11,8 @@ function App() {
         <BrowserRouter>
             <AppProvider>
                 <Routes>
-                    <Route path="/" element={<NotFound />} />
-                    <Route path="*" element={<Dashboard  />} />
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="*" element={<NotFound />} />
                     <Route path="/login" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/users" element={<Users />} />
