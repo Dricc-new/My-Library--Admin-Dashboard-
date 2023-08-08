@@ -16,6 +16,18 @@
     @apply rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-red-600 to-pink-500 text-white;
 }
 
+label{
+    @apply decoration-sky-600 underline decoration-2;
+}
+
+input,textarea{
+    @apply border p-2 focus:outline-blue-900 border-blue-900 rounded;
+}
+
+.input-error{
+    @apply text-red-500 text-xs;
+}
+
 .text-color-error{
 
 }
