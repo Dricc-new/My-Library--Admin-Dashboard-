@@ -4,6 +4,7 @@ import Books from "./pages/Books"
 import Users from "./pages/Users"
 import NotFound from "./pages/NotFound"
 import { AppProvider } from "./context/AppContext"
+import { Toaster } from 'react-hot-toast'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/books" element={<Books />} />
                     <Route path="/books/:id/edit" element={<Books />} />
                 </Routes>
+                <Toaster/>
             </AppProvider>
         </BrowserRouter>
     )

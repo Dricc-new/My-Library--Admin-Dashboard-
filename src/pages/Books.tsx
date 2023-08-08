@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withRouter, WithRouterProps } from '../withRouter';
 import { createBook, getBook, updateBook } from "../services/BookServices";
+import toast from "react-hot-toast";
 
 interface Params {
     id: string;
@@ -31,8 +32,8 @@ class Books extends Component<WithRouterProps<Params>> {
                 this.setState({ id: match.params.id })
                 const res = await getBook(match.params.id)
                 this.setState({ book: res.data })
-            } catch (err) {
-                console.log(err)
+            } catch (err: any) {
+                toast.error(err.message)
             }
         }
     }
@@ -40,11 +41,8 @@ class Books extends Component<WithRouterProps<Params>> {
     render = (): React.ReactNode => <AppLayout>
         <section className="flex justify-center font-bold text-stone-700">
             <Formik
-                initialValues={{
-                    title: '',
-                    author: '',
-                    description: ''
-                }}
+                initialValues={this.state.book}
+                enableReinitialize
 
                 validationSchema={Yup.object({
                     title: Yup.string().required('Title is required'),
@@ -52,7 +50,7 @@ class Books extends Component<WithRouterProps<Params>> {
                     description: Yup.string().required('Description is required')
                 })}
 
-                onSubmit={async (values, actions) => {
+                onSubmit={async (values) => {
                     try {
                         // If the id exists, update the book; otherwise create a new book
                         if (this.state.id) {
@@ -63,8 +61,8 @@ class Books extends Component<WithRouterProps<Params>> {
                         // redirect to dashboard
                         const { navigate } = this.props;
                         navigate('/dashboard')
-                    } catch (err) {
-                        console.log(err)
+                    } catch (err: any) {
+                        toast.error(err.message)
                     }
                 }}>
 

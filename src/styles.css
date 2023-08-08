@@ -9,11 +9,11 @@
 }
 
 .btn-primary{
-    @apply rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-blue-600 to-violet-500 text-white;
+    @apply rounded shadow-md hover:shadow-gray-600 bg-gradient-to-r from-blue-600 to-violet-500 text-white;
 }
 
 .btn-error{
-    @apply rounded shadow-sm hover:shadow-slate-900 bg-gradient-to-r from-red-600 to-pink-500 text-white;
+    @apply rounded shadow-md hover:shadow-gray-600 bg-gradient-to-r from-red-600 to-pink-500 text-white;
 }
 
 label{
